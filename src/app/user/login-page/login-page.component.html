@@ -13,3 +13,8 @@
 
   <button mat-stroked-button (click)="afAuth.signOut()">Logout</button>
 </div>
+
+<div *ngIf="!(afAuth.authState | async)">
+
+  <app-email-login></app-email-login>
+</div>
