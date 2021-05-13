@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BoardListComponent } from './board-list/board-list.component';
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
       import('./kanban/kanban.module').then(m => m.KanbanModule),
     canActivate: [AuthGuard]
   },
+  { path: '', component: BoardListComponent },
 ];
 
 @NgModule({
