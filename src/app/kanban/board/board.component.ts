@@ -20,6 +20,9 @@ export class BoardComponent {
     this.boardService.updateTasks(this.board.id, this.board.tasks);
   }
 
+  handleDelete() {
+    this.boardService.deleteBoard(this.board.id);
+  }
 
   openDialog(task?: Task, idx?: number): void {
     const newTask = { label: 'purple' };
