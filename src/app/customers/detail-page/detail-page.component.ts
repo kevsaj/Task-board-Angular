@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./detail-page.component.scss']
 })
 export class DetailPageComponent implements OnInit {
+  customerId: string;
   customer: Observable<any>;
 
   constructor(
@@ -24,6 +25,7 @@ export class DetailPageComponent implements OnInit {
 
     this.customer = this.db
       .collection('customers')
+      .doc<any>(this.customerId)
       .valueChanges()
       .pipe(
         tap(cust =>
