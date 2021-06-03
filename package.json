@@ -9,8 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run my-app:serve-ssr",
-    "serve:ssr": "node dist/my-app/server/main.js",
-    "build:ssr": "ng build --prod && ng run my-app:server:production",
+    "serve:prerender": "http-server dist/browser -c-1",
+    "build:prerender": "npm run build:client-and-server-bundles && node prerender.js",
     "prerender": "ng run my-app:prerender",
     "prebuild:ssr": "ngcc"
   },
