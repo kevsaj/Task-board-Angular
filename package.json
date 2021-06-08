@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "cypress open",
     "dev:ssr": "ng run my-app:serve-ssr",
     "serve:prerender": "http-server dist/browser -c-1",
     "build:prerender": "npm run build:client-and-server-bundles && node prerender.js",
