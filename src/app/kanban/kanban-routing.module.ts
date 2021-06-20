@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BoardListComponent } from './board-list/board-list.component';
+import { Routes, RouterModule } from '@angular/router';
+import { BoardsListComponent } from './boards-list/boards-list.component';
+
 
 const routes: Routes = [
-  {
-    path: 'kanban',
-    loadChildren: () =>
-      import('./kanban/kanban.module').then(m => m.KanbanModule),
-    canActivate: [AuthGuard]
-  },
-  { path: '', component: BoardListComponent },
+  { path: '', component: BoardsListComponent }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class KanbanRoutingModule { }
+

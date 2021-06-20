@@ -10,17 +10,18 @@ export class DeleteButtonComponent {
 
   @Output() delete = new EventEmitter<boolean>();
 
-  prepareForDelete() {
-    this.canDelete = true;
-  }
-
   cancel() {
     this.canDelete = false;
+  }
+
+  prepareForDelete() {
+    this.canDelete = true;
   }
 
   deleteBoard() {
     this.delete.emit(true);
     this.canDelete = false;
   }
+
 
 }

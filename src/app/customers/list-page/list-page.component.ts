@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from 'src/app/services/seo.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { tap } from 'rxjs/operators';
+import { CustomerDataService } from '../customer-data.service';
 
 @Component({
   selector: 'app-list-page',
@@ -10,7 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ListPageComponent implements OnInit {
   customers;
 
-  constructor(private seo: SeoService, private db: AngularFirestore) { }
+  constructor(private seo: SeoService, private db: AngularFirestore, public data: CustomerDataService) {}
 
   ngOnInit() {
     this.seo.generateTags({
@@ -18,7 +20,8 @@ export class ListPageComponent implements OnInit {
       description: 'A list filled with customers'
     });
 
-    this.customers = this.db.collection('customers').valueChanges({ idField: 'id' });
+    // this.customers = this.db.collection('customers').valueChanges({ idField: 'id' });
 
+    this.data.subscribeToCustomers();
   }
 }

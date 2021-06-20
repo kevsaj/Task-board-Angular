@@ -6,20 +6,14 @@ const { join } = require('path');
 const { enableProdMode } = require('@angular/core');
 
 // Import module map for lazy loading
-const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
-
-const { renderModuleFactory } = require('@angular/platform-server');
-
-// leave this as require(), imported via webpack
 const {
-  AppServerModuleNgFactory,
-  LAZY_MODULE_MAP
-} = require(`./dist/server/main`);
-
+  provideModuleMap
+} = require('@nguniversal/module-map-ngfactory-loader');
+const { renderModuleFactory } = require('@angular/platform-server');
 
 const fs = require('fs-extra');
 
-// Need to manually define routes to prerender
+// Must manually define routes to prerender
 const ROUTES = [
     '/', 
     '/customers',
@@ -30,8 +24,13 @@ const ROUTES = [
     '/login',
 ];
 
+// leave this as require(), imported via webpack
+const {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP
+} = require(`./dist/server/main`);
 
-// START
+// START prerender script
 
 (async function() {
   enableProdMode();
